@@ -1,6 +1,7 @@
 .containerSection{
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
 }
 .startSection{
     display: inline-block;
