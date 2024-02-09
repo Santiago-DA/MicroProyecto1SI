@@ -1,0 +1,14 @@
+.containerSection{
+    display: flex;
+    justify-content: center;
+}
+.startSection{
+    display: inline-block;
+}
+.scoreSection{
+    display: inline-block;
+}
+.tittle{
+    display: flex;
+    justify-content: center;
+}
