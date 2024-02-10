@@ -10,28 +10,44 @@
 </head>
 <body>
     <h1 class="tittle">Bingo!</h1>
+    <!--main Seccion-->
     <div class="containerSection">
         <form class="startSection">
             <h2>Ingrese tamaño del bingo</h2>
-            <input type="number" id="bingoSize" min="3" max="5" value="0"/>
+            <input type="number"id="size" min="3" max="5" value="3"/>
             <h2>Ingrese nombres de los Jugadores</h2>
             <ol>
-                <li><input type="text" id="playerName1"/></li>
-                <li><input type="text" id="playerName2"/></li>
-                <li><input type="text" id="playerName3"/></li>
-                <li><input type="text" id="playerName3"/></li>
+                <li><input type="text" id="playerName1" value=""/></li>
+                <li><input type="text" id="playerName2" value=""/></li>
+                <li><input type="text" id="playerName3" value=""/></li>
+                <li><input type="text" id="playerName4" value=""/></li>
             </ol>  
-            <button onclick="checkValues()">Empezar Bingo</button>
+            <button type="submit" id="startBingo">Empezar Bingo</button>
         </form>
         <div class="scoreSection">
             <h2>Puntaje</h2>
             <ol>
-                <li>Nombre: <span id="nameScore"></span></li>
-                <li>Nombre: <span id="nameScore"></span></li>
-                <li>Nombre: <span id="nameScore"></span></li>
+                <li>Nombre: 999<span id="nameScore"></span></li>
+                <li>Nombre: 897<span id="nameScore"></span></li>
+                <li>Nombre: 680<span id="nameScore"></span></li>
             </ol>
         </div>
     </div>
+    <!--Number generator and counter seccion-->
+    <div class="gameInfo">
+        <div class="numberGenerator">
+            <button id="numberGen">Generar Numero</button>
+            <h3 id="numberGenerated">0</h3>
+        </div>
+        <div class="turnCounter">
+            <h3>Numero de turnos total:</h3>
+            <h3 id="count">0</h3>
+        </div>
+    </div>
+
+    <!--Game board section (carrousel)-->
+    
+
     <footer>Santiago Aristimuño - Sistemas de Información</footer>
     <script src="app.js"></script>
 </body>

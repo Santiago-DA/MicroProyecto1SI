@@ -1,28 +1,35 @@
 
-function genereteBoard(){
-    var size = document.getElementById("bingoSize");
-    console.log(size)
-    //var size =  parseInt(size);
-    //crear el array de la tabla del bingo
-    size = 3
-    for (i=0;i<size*size;i++){
-        var tag = document.createElement("p")
-        var text = document.createTextNode("TEXT");//TODO generete numbers here
-        tag.append(text);
-        var element = document.getElementById('bingoBoard');
-        element.appendChild(tag)
+let startButton = document.getElementById("startBingo")
+startButton.addEventListener("click", saveInitialData)
+
+function saveInitialData(){
+    size = document.getElementById("size").value
+    names = Array(4)
+    for (let i = 0;i<4;i++){
+        names[i] = document.getElementById("playerName"+(i+1)).value
     }
+    localStorage.setItem("size", size)
+    localStorage.setItem("names", names)
+    resetCounter()
 }
-function checkValues(){
-    var size = document.getElementById("bingoSize").value;
-    if ((3<=size) && (5>=size)){
-        window.open("/bingo.html")
-    }else{
-        alert("ingrese un tamaño entre 3 y 5")
-    }
+function resetCounter(){
+    localStorage.setItem("counter", 0)
+    var count = document.getElementById("count")
+    count.textContent = localStorage.getItem("counter")
 }
 
+var numberGenerator = document.getElementById("numberGen")
+numberGenerator.addEventListener("click", updateTurn)
 
+function updateTurn(){
+    const randomNumber = Math.floor(Math.random() * 50) + 1;
+    var numberGenerated = document.getElementById("numberGenerated")
+    numberGenerated.textContent = randomNumber
 
+    var count = document.getElementById("count")
+    var temp = parseInt(localStorage.getItem("counter")) + 1
+    localStorage.setItem("counter", temp)
+    count.textContent = localStorage.getItem("counter")
+}
 
 

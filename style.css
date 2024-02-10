@@ -14,6 +14,25 @@
     display: flex;
     justify-content: center;
 }
+
+.gameInfo{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(2rem, 1fr));
+    place-items: center;
+}
+
+.numberGenerator{
+    display: flex;
+    align-items: center;
+}
+.turnCounter{
+    display: flex;
+    align-items: center;
+}
+
+
+
+
 footer{
     padding-top: 100px;
 }
