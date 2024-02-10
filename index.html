@@ -34,6 +34,7 @@
         </div>
     </div>
     <!--Number generator and counter seccion-->
+    <h2 class="tittle" id="mainGame">BINGO</h2>
     <div class="gameInfo">
         <div class="numberGenerator">
             <button id="numberGen">Generar Numero</button>
@@ -46,9 +47,37 @@
     </div>
 
     <!--Game board section (carrousel)-->
-    
+    <div class="carrusel">
+        <div class="grande">
+            <div class="playerSection" id="player1">
+                <h4 id="name1">1</h4>
+                <div id="board1" class="board"></div>
+            </div>
+
+            <div class="playerSection" id="player2">
+                <h4 id="name2">2</h4>
+                <div id="board2" class="board"></div>
+            </div>
+
+            <div class="playerSection" id="player3">
+                <h4 id="name3">3</h4>
+                <div id="board3" class="board"></div>
+            </div>
+
+            <div class="playerSection" id="player4">
+                <h4 id="name4">4</h4>
+                <div id="board4" class="board"></div>
+            </div>
+        </div>
+        <ul class="points">
+            <li class="point"></li>
+            <li class="point"></li>
+            <li class="point"></li>
+            <li class="point"></li>
+        </ul>
+    </div>
 
     <footer>Santiago Aristimuño - Sistemas de Información</footer>
-    <script src="app.js"></script>
+    <script defer src="app.js"></script>
 </body>
 </html>

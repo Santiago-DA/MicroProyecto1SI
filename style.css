@@ -1,3 +1,7 @@
+ * {
+    background-color: #8ecae6;
+    font-family: Arial, Helvetica, sans-serif;
+}
 .containerSection{
     display: grid;
 
@@ -28,6 +32,38 @@
 .turnCounter{
     display: flex;
     align-items: center;
+}
+#mainGame{
+    padding-top: 100px;
+}
+
+.carrusel{
+    width: 90%;
+    max-width: 120em;
+}
+.carrusel .grande{
+    width: 400%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+.carrusel .playerSection{
+    width: calc(100%/4);
+}
+.carrusel .points{
+    width: 100%;
+    padding: 1em;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.carrusel .point{
+    width: 2em;
+    height: 2em;
+    margin: 1em;
 }
 
 
