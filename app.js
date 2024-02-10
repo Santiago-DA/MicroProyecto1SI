@@ -3,6 +3,7 @@ let startButton = document.getElementById("startBingo")
 startButton.addEventListener("click", saveInitialData)
 startButton.addEventListener("click", stopReload)
 startButton.addEventListener("click", generateBoards)
+startButton.addEventListener("click", adjustBoards)
 
 function stopReload(evt){
     evt.preventDefault()
@@ -53,17 +54,20 @@ function generateBoards(){
         var playerName = document.getElementById("name"+(i+1));
         var temp = localStorage.getItem("name"+(i+1))
         playerName.textContent = temp;
-        //add size*size divs
         var currentBoard = document.getElementById("board"+(i+1))
-        alert(currentBoardBoard)
+        //add size*size divs
         for (j=0; j < size*size ;j++){
             var element = document.createElement("div")
             var text = document.createTextNode("Example")
             element.appendChild(text)
-            //currentBoard.appendChild(element)
+            currentBoard.appendChild(element)
         }
-        alert(element.innerHTML)
-        //add all to the div that i search
-
     }
+}
+function adjustBoards(){
+    var size = localStorage.getItem("size")
+    size = parseInt(size)
+
+    var board = document.documentElement
+    board.style.setProperty("--size",""+size)
 }
