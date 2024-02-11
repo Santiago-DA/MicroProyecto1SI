@@ -1,7 +1,7 @@
 
 let startButton = document.getElementById("startBingo")
-startButton.addEventListener("click", saveInitialData)
 startButton.addEventListener("click", stopReload)
+startButton.addEventListener("click", saveInitialData)
 startButton.addEventListener("click", generateBoards)
 startButton.addEventListener("click", adjustBoards)
 
@@ -36,7 +36,7 @@ var numberGenerator = document.getElementById("numberGen")
 numberGenerator.addEventListener("click", updateTurn)
 
 function updateTurn(){
-    const randomNumber = Math.floor(Math.random() * 50) + 1;
+    const randomNumber = Math.floor(Math.random() * 50) + 1;//*Funcion Importante
     var numberGenerated = document.getElementById("numberGenerated")
     numberGenerated.textContent = randomNumber
 
@@ -44,6 +44,7 @@ function updateTurn(){
     var temp = parseInt(localStorage.getItem("counter")) + 1
     localStorage.setItem("counter", temp)
     count.textContent = localStorage.getItem("counter")
+
 }
 
 function generateBoards(){
@@ -58,6 +59,7 @@ function generateBoards(){
         //add size*size divs
         for (j=0; j < size*size ;j++){
             var element = document.createElement("div")
+            element.setAttribute("class", "box")
             var text = document.createTextNode("Example")
             element.appendChild(text)
             currentBoard.appendChild(element)
@@ -71,3 +73,18 @@ function adjustBoards(){
     var board = document.documentElement
     board.style.setProperty("--size",""+size)
 }
+//parte del carrusel
+const grande = document.querySelector(".grande")
+const punto = document.querySelectorAll(".point")
+
+punto.forEach((eachPoint, i) => {
+    punto[i].addEventListener("click",()=>{
+        let position = i
+        let operation = position *(-25)
+        grande.style.transform = `translateX(${operation}%)`
+        punto.forEach((eachPoint, i)=>{
+            punto[i].classList.remove("activo")
+        })
+        punto[i].classList.add("activo")
+    })
+});
