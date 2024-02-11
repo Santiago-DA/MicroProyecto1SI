@@ -13,7 +13,6 @@ function saveInitialData(){
     size = document.getElementById("size").value
     size = parseInt(size)
 
-    //TODO redo this
     name1 = document.getElementById("playerName"+1).value
     name2 = document.getElementById("playerName"+2).value
     name3 = document.getElementById("playerName"+3).value
@@ -46,6 +45,10 @@ function updateTurn(){
     var temp = parseInt(localStorage.getItem("counter")) + 1
     localStorage.setItem("counter", temp)
     count.textContent = localStorage.getItem("counter")
+
+    if (maxTurnReached()){
+        endGame()
+    }
 }
 
 function generateBoards(){
@@ -93,17 +96,95 @@ punto.forEach((eachPoint, i) => {
 //turns and scrore
 const MAXTURN = 25
 function maxTurnReached(){
-    var currentTurn = localStorage.getItem(counter)
+    var currentTurn = localStorage.getItem("counter")
     currentTurn = parseInt(currentTurn)
     if (currentTurn == MAXTURN){
         return true
     }
 }
 function endGame(){
-    if (maxTurnReached()){
+    var endGameSection = document.getElementById("endgamesection")
 
+    var puntajeTittle = document.createElement("h5")
+    var puntajeTexto = document.createTextNode("PUNTAJE")
+    puntajeTittle.appendChild(puntajeTexto)
+    alert(puntajeTittle)
+    endGameSection.appendChild(puntajeTittle)
+    puntaje = calculateScore()
+
+    for (var i=0;i<4;i++){
+        var score =  document.createElement("h6")
+        var text = document.createTextNode(""+puntaje[i][0]+": "+puntaje[i][1])
+        score.appendChild(text)
+        endGameSection.appendChild(score)
     }
 }
+function calculateScore(){
+    puntajes = [
+        [localStorage.getItem("name1"),0],
+        [localStorage.getItem("name1"),0],
+        [localStorage.getItem("name1"),0],
+        [localStorage.getItem("name1"),0]]
+    var size = localStorage.getItem("size")
+    size = parseInt(size)
+    for (let i=0;i<4;i++){
+        var matching = document.querySelectorAll(".match");
+        //carton lleno
+        if (matching.length == size*size){
+            puntajes[i][1] += 5
+        }
+        //traer todos los numeros
+            var boxes = document.querySelectorAll(".box")
+        //horizontales
+        var aux = 0
+        for(var k=0;k<size;k++) {
+            if (boxes.item(j+aux).classList.contains("match")){
+            }else{
+                break
+            }
+        }
+        puntajes[i][1]+=1
+        aux +=size
+        //vertivales
+        var aux = 0
+        for (var k=0;k<size;k++){
+            aux = size*k
+            if (boxes.item(aux).classList.contains("match")){
+
+            }else{
+                break
+            }
+        }
+        puntajes[i][1] += 1
+        //diagonales
+        var aux = 0
+        startingCornes = [0,size-1]
+        for (var j=0;j<size-1;j++){
+            if(boxes.item(aux).classList.contains("match")){
+            }else{
+                break
+            }
+            if(j==size-2){
+                puntajes[i][1] += 3
+            }
+            aux += size+1
+        }
+        aux = size-1
+        for (var j=0;j<size-1;j++){
+            if(boxes.item(aux).classList.contains("match")){
+            }else{
+                break
+            }
+            if(j==size-2){
+                puntajes[i][1] += 3
+            }
+            aux += size-1
+        }
+        aux = 0
+    }
+    return puntajes
+}
+
 //numbers in bingo
 var size = localStorage.getItem("size")
 size = parseInt(size)
