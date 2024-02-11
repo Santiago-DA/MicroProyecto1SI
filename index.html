@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BINGO</title>
 
+    <link rel="icon" type="image/png" href="/icon.png">
+
     <link rel="stylesheet" href="style.css">
 
 </head>
@@ -14,13 +16,13 @@
     <div class="containerSection">
         <form class="startSection">
             <h2>Ingrese tamaño del bingo</h2>
-            <input type="number"id="size" min="3" max="5" value="3"/>
+            <input type="number"id="size" min="3" max="5" value="3" class="sizeInput"/>
             <h2>Ingrese nombres de los Jugadores</h2>
             <ol>
-                <li><input type="text" id="playerName1" value=""/></li>
-                <li><input type="text" id="playerName2" value=""/></li>
-                <li><input type="text" id="playerName3" value=""/></li>
-                <li><input type="text" id="playerName4" value=""/></li>
+                <li><input type="text" id="playerName1" value="" placeholder="jugador 1" class="nameInput"/></li>
+                <li><input type="text" id="playerName2" value="" placeholder="jugador 2" class="nameInput"/></li>
+                <li><input type="text" id="playerName3" value="" placeholder="jugador 3" class="nameInput"/></li>
+                <li><input type="text" id="playerName4" value="" placeholder="jugador 4" class="nameInput"/></li>
             </ol>  
             <button type="submit" id="startBingo">Empezar Bingo</button>
         </form>
@@ -34,7 +36,7 @@
         </div>
     </div>
     <!--Number generator and counter seccion-->
-    <h2 class="tittle" id="mainGame">BINGO</h2>
+    <h2 class="tittle" id="mainGame">BINGO</h1>
     <div class="gameInfo">
         <div class="numberGenerator">
             <button id="numberGen">Generar Numero</button>

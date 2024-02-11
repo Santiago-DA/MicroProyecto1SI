@@ -60,7 +60,7 @@ function generateBoards(){
         for (j=0; j < size*size ;j++){
             var element = document.createElement("div")
             element.setAttribute("class", "box")
-            var text = document.createTextNode("Example")
+            var text = document.createTextNode(bingoNumbers[i][j])
             element.appendChild(text)
             currentBoard.appendChild(element)
         }
@@ -88,3 +88,36 @@ punto.forEach((eachPoint, i) => {
         punto[i].classList.add("activo")
     })
 });
+//turns and scrore
+const MAXTURN = 25
+function maxTurnReached(){
+    var currentTurn = localStorage.getItem(counter)
+    currentTurn = parseInt(currentTurn)
+    if (currentTurn == MAXTURN){
+        return true
+    }
+}
+function endGame(){
+    if (maxTurnReached()){
+
+    }
+}
+//numbers in bingo
+var size = localStorage.getItem("size")
+size = parseInt(size)
+const bingo1 = generatingBingoNumbers(size*size)
+const bingo2 = generatingBingoNumbers(size*size)
+const bingo3 = generatingBingoNumbers(size*size)
+const bingo4 = generatingBingoNumbers(size*size)
+var bingoNumbers = [bingo1,bingo2,bingo3,bingo4]
+
+function generatingBingoNumbers(n) {
+    const numbers = [];
+    while (numbers.length < n) {
+      const randomNumber = Math.floor(Math.random() * 50) + 1;
+        if (!numbers.includes(randomNumber)) {
+        numbers.push(randomNumber);
+        }
+    }
+    return numbers;
+}
