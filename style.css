@@ -134,6 +134,18 @@
     background-color: #fb8500;
 }
 
+button {
+    border-radius: 10px;
+    margin-right: 10px;
+}
+#generated{
+    font-style: italic;
+    color: #fb8500;
+}
+#count{
+    font-style: italic;
+    color: #fb8500;
+}
 ul{
     list-style: none;
 }
