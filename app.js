@@ -34,17 +34,18 @@ function resetCounter(){
 
 var numberGenerator = document.getElementById("numberGen")
 numberGenerator.addEventListener("click", updateTurn)
+numberGenerator.addEventListener("click", updateBoard)
 
 function updateTurn(){
     const randomNumber = Math.floor(Math.random() * 50) + 1;//*Funcion Importante
-    var numberGenerated = document.getElementById("numberGenerated")
+    var numberGenerated = document.getElementById("generated")
+
     numberGenerated.textContent = randomNumber
 
     var count = document.getElementById("count")
     var temp = parseInt(localStorage.getItem("counter")) + 1
     localStorage.setItem("counter", temp)
     count.textContent = localStorage.getItem("counter")
-
 }
 
 function generateBoards(){
@@ -62,6 +63,7 @@ function generateBoards(){
             element.setAttribute("class", "box")
             var text = document.createTextNode(bingoNumbers[i][j])
             element.appendChild(text)
+            element.setAttribute("id", ""+i+"-"+j)
             currentBoard.appendChild(element)
         }
     }
@@ -120,4 +122,19 @@ function generatingBingoNumbers(n) {
         }
     }
     return numbers;
+}
+function updateBoard(){
+    let size = localStorage.getItem("size")
+    size = parseInt(size)
+
+    let numberGenerated = document.getElementById('generated')
+
+    for (let i=0; i<4; i++){
+        for (let j=0;j<size*size;j++){
+            if(bingoNumbers[i][j] ==  parseInt(numberGenerated.textContent)){
+                var matchingNum = document.getElementById(""+i+"-"+j)
+                matchingNum.classList.add("match")
+            }
+        }
+    }
 }
